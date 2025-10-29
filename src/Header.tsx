@@ -7,7 +7,7 @@ return(
          <li className="inline-block cursor-pointer"> <a href="#">Home</a></li>
          <li className="inline-block cursor-pointer"> <a href="#">Features</a></li>
          <li className="inline-block cursor-pointer"> <a href="#">Pricing</a></li>
-         <li className="inline-block cursor-pointer"> <a href="#">Blogs</a></li>
+         <li className="inline-block cursor-pointer"> <a href="#">Blog</a></li>
       </ul>
       <select className="cursor-pointer text-white mr-12 bg-[#0d023c] h-8 my-auto">
          <option className="">USD</option>
