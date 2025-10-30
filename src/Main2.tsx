@@ -1,7 +1,16 @@
 import { useState } from "react";
 import { useEffect } from "react";
+interface Coin {
+  id: string;
+  name: string;
+  image: string;
+  symbol: string;
+  current_price: number;
+  market_cap: number;
+  price_change_percentage_24h: number;
+}
 function Main2(){
-   const [coin,setcoins] = useState([]);
+   const [coin,setcoins] = useState<Coin[]>([]);
    useEffect(()=>{
       fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd")
        .then((res)=>{
@@ -29,6 +38,34 @@ return(
        placeholder-gray-600 p-4 text-black" ></input>
        <button className="bg-[#7b3ff3] h-10 p-2 rounded -ml-24 cursor-pointer">Search</button>
        </div>
+
+       <table className="mx-auto mt-12 border-separate border-spacing-x-24 border-spacing-y-8">
+         <thead>
+         <tr>
+            <th>#</th>
+            <th>Coin</th>
+            <th>Price</th>
+            <th>24H Change</th>
+            <th>Market Cap</th>
+         </tr>
+         </thead>
+         <tbody>
+         {coin.slice(0,12).map( (c,i) =>(
+             <tr key={c.id}>
+               <td>{i+1}</td>
+               <td>
+               <img src={c.image} className="h-12" />
+                  {c.id}
+               </td>
+               <td>{c.current_price}</td>
+
+               <td>{c.price_change_percentage_24h}</td>
+               <td>{c.market_cap}</td>
+             </tr>
+         )
+        ) }
+        </tbody>
+       </table>
 </main>
 )
 }
