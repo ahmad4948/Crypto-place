@@ -59,7 +59,9 @@ return(
                </td>
                <td>{c.current_price}</td>
 
-               <td>{c.price_change_percentage_24h}</td>
+               <td className={ c.price_change_percentage_24h>0? "text-green-400"
+                : c.price_change_percentage_24h<0? "text-red-500"
+                : "text-white" }  >{c.price_change_percentage_24h.toFixed(3)} %</td>
                <td>{c.market_cap}</td>
              </tr>
          )
