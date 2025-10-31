@@ -40,7 +40,7 @@ return(
        </div>
 
        <table className="mx-auto mt-12 border-separate border-spacing-x-24 border-spacing-y-8">
-         <thead>
+         <thead  className="outline outline-white-800">
          <tr>
             <th>#</th>
             <th>Coin</th>
@@ -49,13 +49,13 @@ return(
             <th>Market Cap</th>
          </tr>
          </thead>
-         <tbody>
+         <tbody  className="outline outline-white-800">
          {coin.slice(0,12).map( (c,i) =>(
-             <tr key={c.id}>
+             <tr key={c.id} className="outline outline-white">
                <td>{i+1}</td>
-               <td>
-               <img src={c.image} className="h-12" />
-                  {c.id}
+               <td className="flex items-center gap-1.5">
+               <img src={c.image} className="h-11" />
+               <span>{c.id}</span> 
                </td>
                <td>{c.current_price}</td>
 
