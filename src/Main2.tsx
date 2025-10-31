@@ -25,7 +25,7 @@ function Main2(){
    },[]);
 
 return(
-<main className="bg-[#0d023c] text-white h-165 text-center">
+<main className="bg-[#0d023c] text-white text-center">
    <h1 className="text-6xl mt-24"> 
       <span className="block font-semibold">Largest </span> 
       <span className="mt-6 block font-semibold"> Crypto Marketplace  </span>
