@@ -14,6 +14,7 @@ interface Coin {
 }
 function Main2({currency}: main2props){
    const [coin,setcoins] = useState<Coin[]>([]);
+   const [query, setquery] = useState<string>("");
    useEffect(()=>{
       fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.toLowerCase()}`)
        .then((res)=>{
@@ -27,6 +28,20 @@ function Main2({currency}: main2props){
        .catch((err)=>console.log("error:" , err));
    },[currency]);
 
+   const q = query.trim().toLowerCase();
+   const filtered: Coin[] = [];
+   for(let i=0;i<coin.length;i++){
+      const c = coin[i];
+      if(c.id.toLowerCase().includes(q) || c.id.toLowerCase().includes(q) ||
+      c.id.toLowerCase().includes(q)){
+         filtered.push(c);
+      }
+   }
+   let displayList: Coin[] = [];
+      if (q === "") {
+      displayList = coin.slice(0, 12); } 
+      else{
+      displayList = filtered; }
 return(
 <main className="bg-[#0d023c] text-white text-center">
    <h1 className="text-6xl mt-24"> 
@@ -38,10 +53,12 @@ return(
 
       <div className="flex justify-center mt-12 items-center">
       <input placeholder="Search crypto.." className="bg-white w-120 h-14 rounded
-       placeholder-gray-600 p-4 text-black" ></input>
+       placeholder-gray-600 p-4 text-black"
+       value={query}
+       onChange={(e)=>setquery(e.target.value)} ></input>
        <button className="bg-[#7b3ff3] h-10 p-2 rounded -ml-24 cursor-pointer">Search</button>
        </div>
-
+       
        <table className="mx-auto mt-12 border-separate border-spacing-x-24 border-spacing-y-8">
          <thead  className="outline outline-white-800">
          <tr>
@@ -53,7 +70,7 @@ return(
          </tr>
          </thead>
          <tbody  className="outline outline-white-800">
-         {coin.slice(0,12).map( (c,i) =>(
+         {displayList.map( (c,i) =>(
              <tr key={c.id} className="outline outline-white">
                <td>{i+1}</td>
                <td className="flex items-center gap-1.5">
