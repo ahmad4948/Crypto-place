@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { useEffect } from "react";
+type main2props = {
+ currency: "USD" | "EUR" | "AED";
+}
 interface Coin {
   id: string;
   name: string;
@@ -9,10 +12,10 @@ interface Coin {
   market_cap: number;
   price_change_percentage_24h: number;
 }
-function Main2(){
+function Main2({currency}: main2props){
    const [coin,setcoins] = useState<Coin[]>([]);
    useEffect(()=>{
-      fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd")
+      fetch(`https://api.coingecko.com/api/v3/coins/markets?vs_currency=${currency.toLowerCase()}`)
        .then((res)=>{
        return res.json()
        }
@@ -22,7 +25,7 @@ function Main2(){
          setcoins(data);
        } )
        .catch((err)=>console.log("error:" , err));
-   },[]);
+   },[currency]);
 
 return(
 <main className="bg-[#0d023c] text-white text-center">
