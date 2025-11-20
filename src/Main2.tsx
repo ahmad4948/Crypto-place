@@ -51,39 +51,39 @@ return(
    <p className="mt-10 md:mt-12 text-gray-300">Welcome to the world's largest cryptocurrency marketplace.</p>
       <p className="text-gray-300">Sign up to explore more about cryptos.</p>
 
-      <div className="flex justify-center mt-12 items-center">
-      <input placeholder="Search crypto.." className="bg-white w-90 h-11 md:w-120 md:h-14 rounded
+      <div className="flex justify-center mt-12 items-center mr-7 md:mr-0">
+      <input placeholder="Search crypto.." className="bg-white w-85 h-11 md:w-120 md:h-14 rounded
        placeholder-gray-600 p-4 text-black"
        value={query}
        onChange={(e)=>setquery(e.target.value)} ></input>
        <button className="bg-[#7b3ff3] h-9  md:h-10 p-2 rounded -ml-24 cursor-pointer">Search</button>
        </div>
        
-       <table className="mx-auto mt-12 border-separate border-spacing-x-7 border-spacing-y-5
+       <table className="mx-auto mt-12 border-separate border-spacing-x-1.5 border-spacing-y-5
        md:border-spacing-x-24 md:border-spacing-y-8">
          <thead  className="outline outline-white-800">
          <tr>
-            <th>#</th>
-            <th>Coin</th>
-            <th>Price</th>
-            <th>24H Change</th>
-            <th>Market Cap</th>
+            <th className="text-sm md:text-base">#</th>
+            <th className="text-sm md:text-base">Coin</th>
+            <th className="text-sm md:text-base">Price</th>
+            <th className="text-sm md:text-base">24H Change</th>
+            <th className="text-sm md:text-base">Market Cap</th>
          </tr>
          </thead>
          <tbody  className="outline outline-white-800">
          {displayList.map( (c,i) =>(
              <tr key={c.id} className="outline outline-white">
-               <td>{i+1}</td>
-               <td className="flex items-center gap-1.5">
-               <img src={c.image} className="h-10 md:h-11" />
-               <span>{c.id}</span> 
+               <td className="text-sm md:text-base">{i+1}</td>
+               <td className="flex items-center gap-1 md:gap-1.5 flex-wrap">
+               <img src={c.image} className="h-8.5 md:h-11" />
+               <span className="text-sm md:text-base">{c.id}</span> 
                </td>
-               <td>{c.current_price}</td>
+               <td className="text-sm md:text-base">{c.current_price}</td>
 
-               <td className={ c.price_change_percentage_24h>0? "text-green-400"
-                : c.price_change_percentage_24h<0? "text-red-500"
-                : "text-white" }  >{c.price_change_percentage_24h.toFixed(3)} %</td>
-               <td>{c.market_cap}</td>
+               <td className={ c.price_change_percentage_24h>0? "text-green-400  text-sm md:text-base"
+                : c.price_change_percentage_24h<0? "text-red-500 text-sm md:text-base"
+                : "text-white text-sm md:text-base" }  >{c.price_change_percentage_24h.toFixed(3)} %</td>
+               <td className="text-sm md:text-base">{c.market_cap}</td>
              </tr>
          )
         ) }
