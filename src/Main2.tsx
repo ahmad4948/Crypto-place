@@ -44,22 +44,23 @@ function Main2({currency}: main2props){
       displayList = filtered; }
 return(
 <main className="bg-[#0d023c] text-white text-center">
-   <h1 className="text-6xl mt-24"> 
+   <h1 className="text-3xl md:text-6xl mt-13 md:mt-24"> 
       <span className="block font-semibold">Largest </span> 
-      <span className="mt-6 block font-semibold"> Crypto Marketplace  </span>
+      <span className="mt-4 md:mt-6 block font-semibold"> Crypto Marketplace  </span>
       </h1>
-   <p className="mt-12 text-gray-300">Welcome to the world's largest cryptocurrency marketplace.</p>
+   <p className="mt-10 md:mt-12 text-gray-300">Welcome to the world's largest cryptocurrency marketplace.</p>
       <p className="text-gray-300">Sign up to explore more about cryptos.</p>
 
       <div className="flex justify-center mt-12 items-center">
-      <input placeholder="Search crypto.." className="bg-white w-120 h-14 rounded
+      <input placeholder="Search crypto.." className="bg-white w-90 h-11 md:w-120 md:h-14 rounded
        placeholder-gray-600 p-4 text-black"
        value={query}
        onChange={(e)=>setquery(e.target.value)} ></input>
-       <button className="bg-[#7b3ff3] h-10 p-2 rounded -ml-24 cursor-pointer">Search</button>
+       <button className="bg-[#7b3ff3] h-9  md:h-10 p-2 rounded -ml-24 cursor-pointer">Search</button>
        </div>
        
-       <table className="mx-auto mt-12 border-separate border-spacing-x-24 border-spacing-y-8">
+       <table className="mx-auto mt-12 border-separate border-spacing-x-7 border-spacing-y-5
+       md:border-spacing-x-24 md:border-spacing-y-8">
          <thead  className="outline outline-white-800">
          <tr>
             <th>#</th>
@@ -74,7 +75,7 @@ return(
              <tr key={c.id} className="outline outline-white">
                <td>{i+1}</td>
                <td className="flex items-center gap-1.5">
-               <img src={c.image} className="h-11" />
+               <img src={c.image} className="h-10 md:h-11" />
                <span>{c.id}</span> 
                </td>
                <td>{c.current_price}</td>
